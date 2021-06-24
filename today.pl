@@ -83,6 +83,10 @@ binmode STDERR, ':encoding(cp932)';
 #				$line	=	"<a name=\"label$1\" id=\"label$1\"></a>\n";		#2021.06.24 
 				$line	=	"<a id=\"label$1\"></a>\n";
 			}
+#2021.06.25 外部リンク　font 設定を css へ　変更
+			$line	=~ s/<FONT color=\"magenta\">/<span class="External_link">/;
+			$line	=~ s/<\/FONT>/<\/span>/;
+#<-			
 			&write_rtn();	
 			&read_link_rtn();
 	}	
