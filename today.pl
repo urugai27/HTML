@@ -80,7 +80,8 @@ binmode STDERR, ':encoding(cp932)';
 #	<a name="label20210622"></a>	-> <a name="label20210622"  id="label20210619"></a>
 
 			if($line	=~/<a name=\"label(\d{8})/){			
-				$line	=	"<a name=\"label$1\" id=\"label$1\"></a>\n";
+#				$line	=	"<a name=\"label$1\" id=\"label$1\"></a>\n";		#2021.06.24 
+				$line	=	"<a id=\"label$1\"></a>\n";
 			}
 			&write_rtn();	
 			&read_link_rtn();
