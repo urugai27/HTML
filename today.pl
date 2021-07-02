@@ -14,6 +14,9 @@ binmode STDERR, ':encoding(cp932)';
 
 	my $true	 = "1";
 	my $false	 = "0";	
+#2021.07.02     作成時刻を都度設定する
+	my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime;
+
 
 	print "入力マスタファイル=$infile, 入力リンクファイル=$linfile\n";
 	open(INMAST,"<",$infile) or die("error :$!");
@@ -87,7 +90,13 @@ binmode STDERR, ':encoding(cp932)';
 			$line	=~ s/<FONT color=\"magenta\">/<span class="External_link">/;
 			$line	=~ s/<\/FONT>/<\/span>/;
 #<-			
-			&write_rtn();	
+#編集時刻を置き換える	<br>16:15
+			if($line	=~/^<br>(\d{2}):(\d{2})$/){			#
+					printf OTDD "<br>%02d:%02d\n",$hour,$min;
+			}else{
+				&write_rtn();	
+			}
+#<-			
 			&read_link_rtn();
 	}	
 
