@@ -1,11 +1,15 @@
-﻿@charset “UTF-8”; /*この指定は、外部スタイルシートファイル内でのみ使用 文字化けを防ぐため*/
+@charset “UTF-8”; /*この指定は、外部スタイルシートファイル内でのみ使用 文字化けを防ぐため*/
 
 body{
 
 }
 .today_title{
-	color:red
+	color:red;
 }
-.External_link{
-	color:magenta
+.def-toha{
+	color:black;
+	width:480px;
+/*	width:90%;	ng  */
+	font-weight:bold;
+	font-size:80%;
 }
