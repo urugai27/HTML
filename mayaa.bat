@@ -1,12 +1,19 @@
+set htmldir=%~dp0
+echo %htmldir%
+set myDocDir=%USERPROFILE%\Documents
 
-set PERL5LIB=C:\Users\ATHUSHI\Desktop\html
+set PERL5LIB=%~dp0
 perl mayaa.pl def_mayaa_index.html tmp_edit.html
 
-xcopy /e /d C:\Users\ATHUSHI\Desktop\HTML\image    C:\Users\ATHUSHI\Documents\urugai04.bitbucket.io\image
-xcopy /e /d C:\Users\ATHUSHI\Desktop\HTML\link    C:\Users\ATHUSHI\Documents\urugai04.bitbucket.io\link
-xcopy /e /d C:\Users\ATHUSHI\Desktop\HTML\Reimage    C:\Users\ATHUSHI\Documents\urugai04.bitbucket.io\Reimage
-xcopy /y /d C:\Users\ATHUSHI\Desktop\HTML\index.html    C:\Users\ATHUSHI\Documents\urugai04.bitbucket.io\index.html
+del /q %myDocDir%\urugai04.bitbucket.io\image\*.*
+del /q %myDocDir%\urugai04.bitbucket.io\link\*.*
+del /q %myDocDir%\urugai04.bitbucket.io\Reimage\*.*
 
-xcopy /y /d C:\Users\ATHUSHI\Desktop\HTML\audio    C:\Users\ATHUSHI\Documents\urugai04.bitbucket.io\audio
+xcopy /e /d %htmldir%\image      %myDocDir%\urugai04.bitbucket.io\image
+xcopy /e /d %htmldir%\link       %myDocDir%\urugai04.bitbucket.io\link
+xcopy /e /d %htmldir%\Reimage    %myDocDir%\urugai04.bitbucket.io\Reimage
+xcopy /y /d %htmldir%\index.html %myDocDir%\urugai04.bitbucket.io\index.html
+
+xcopy /e /d %htmldir%\audio      %myDocDir%\urugai04.bitbucket.io\audio
 
 

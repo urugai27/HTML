@@ -1,11 +1,13 @@
-set makedir=%~dp0
-set htmldir=%makedir:\make=%
+set htmldir=%~dp0
 echo %htmldir%
-cd "%USERPROFILE%\My Documents"
 set myDocDir=%USERPROFILE%\Documents
 
 set PERL5LIB=%~dp0
 perl today.pl def_HTML5_index.html tmp_edit.html 
+
+del %myDocDir%\urugai27.github.io\image\*.*
+del %myDocDir%\urugai27.github.io\link\*.*
+del %myDocDir%\urugai27.github.io\Reimage\*.*
 
 xcopy /e /d %htmldir%\image      %myDocDir%\urugai27.github.io\image
 xcopy /e /d %htmldir%\link       %myDocDir%\urugai27.github.io\link
