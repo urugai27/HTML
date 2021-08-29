@@ -1,6 +1,12 @@
-﻿use strict;
+﻿# 2021.09.29  格納アドレスを絶対アドレスからカレントディレクトリへ変更
+use strict;
 use warnings;
 use utf8;
+use Cwd;	#	2021.08.29 カレントディレクトリの取得	
+	my $wd = Cwd::getcwd();
+	print $wd, "\n";
+	my $htmldir = $wd;
+	$htmldir =~ s/make//;
 
 use Encode; 
 
@@ -17,7 +23,10 @@ binmode STDERR, ':encoding(cp932)';
 	print "入力ファイル=$infile, 出力ファイル=$otfile\n";
 	open(INDD,"<",$infile) or die("error :$!");
 #2021.03.12	絶対アドレスに変更する;	
-	$otfile	=	"C:\\Users\\ATHUSHI\\Desktop\\html\\".$otfile;	
+#	$otfile	=	"C:\\Users\\ATHUSHI\\Desktop\\html\\".$otfile;	
+#2021.08.29	カレントディレクトリをベースにしたアドレスに変更する;	
+	$otfile	=	$htmldir.$otfile;	
+
 	open(OTDD,">",$otfile) or die("error :$!");
 	
 #	@youbi = ('日', '月', '火', '水', '木', '金', '土');

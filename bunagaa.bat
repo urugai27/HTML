@@ -1,4 +1,4 @@
 
-set PERL5LIB=C:\Users\ATHUSHI\Desktop\html
+set PERL5LIB=%~dp0
 perl bunagaa.pl def_bunagaa_index.html tmp_edit.html
 

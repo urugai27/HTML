@@ -1,7 +1,14 @@
-﻿# 2021.03.26  画面のサイズ情報を追加する
+﻿# 2021.09.29  イメージファイルの格納アドレスを絶対アドレスからカレントディレクトリへ変更
+# 2021.03.26  画面のサイズ情報を追加する
 use strict;
 use warnings;
 use utf8;
+
+use Cwd;	#	2021.08.29 カレントディレクトリの取得	
+	my $wd = Cwd::getcwd();
+	print $wd, "\n";
+	my $htmldir = $wd;
+	$htmldir =~ s/make//;
 
 use Encode; 
 
@@ -18,7 +25,9 @@ binmode STDERR, ':encoding(cp932)';
 	print "入力ファイル=$infile, 出力ファイル=$otfile\n";
 	open(INDD,"<",$infile) or die("error :$!");
 #2021.03.12	絶対アドレスに変更する;	
-	$otfile	=	"C:\\Users\\ATHUSHI\\Desktop\\html\\".$otfile;	
+#	$otfile	=	"C:\\Users\\ATHUSHI\\Desktop\\html\\".$otfile;	
+#2021.08.29	カレントディレクトリをベースにしたアドレスに変更する;	
+	$otfile	=	$htmldir.$otfile;	
 	print	$otfile,"\n";
 	open(OTDD,">",$otfile) or die("error :$!");
 	
@@ -110,7 +119,9 @@ sub link_write_rtn{
 	
 #		$linkdd	=	$picture.".html";	
 #2021.03.12	絶対アドレスに変更する;	
-		$linkdd	=	"C:\\Users\\ATHUSHI\\Desktop\\html\\link\\".$picture.".html";	
+#		$linkdd	=	"C:\\Users\\ATHUSHI\\Desktop\\html\\link\\".$picture.".html";	
+#2021.08.29	カレントディレクトリをベースにしたアドレスに変更する;	
+		$linkdd	=	$htmldir."\\link\\".$picture.".html";
 
 	open(LINKDD,">",$linkdd) or die("error :$!");
 

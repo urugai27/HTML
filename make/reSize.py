@@ -1,4 +1,6 @@
 #2021.03.28			縮小しない場合はそのままの画像を展開する   
+#2021.08.29			イメージファイルの格納アドレスを絶対アドレスからカレントディレクトリへ変更
+import re			#2021.08.29 		正規表現にマッチした文字列を新しい文字列に置換する
 import os
 import glob
 from PIL import Image
@@ -28,7 +30,12 @@ for f in files:
   #新しいファイル名を作成
   imgdir = os.path.dirname(f)
   imgname = os.path.basename(f)
-  imgdir = 'C:/Users/ATHUSHI/Desktop/HTML/Reimage'
+#  imgdir = 'C:/Users/ATHUSHI/Desktop/HTML/Reimage'
+#  2021.08.29 実行中のファイルの場所（パス）を取得する 	
+  makedir = os.getcwd()
+  pattern = re.compile(r'make')			#正規表現パターン
+  htmldir = pattern.sub('',makedir)		#make を nullにする
+  imgdir = htmldir  + "Reimage"
 #  newfname = imgdir + "/20210312_" + imgname
   newfname = imgdir + "/"+ today.strftime('%Y%m%d')+"_" + imgname
   print(newfname)
