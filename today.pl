@@ -1,4 +1,5 @@
-﻿use strict;
+﻿#2021.09.21     枠を設けた /body → </div><!-- /#wrap @@@ --> へ
+use strict;
 use warnings;
 use utf8;
 
@@ -61,7 +62,8 @@ binmode STDERR, ':encoding(cp932)';
 			&read_link_rtn();
 	}	
 
-	until(( $line	=~/^<\/body>/)			#
+#	until(( $line	=~/^<\/body>/)			#
+	until(( $line	=~/@@@/)				#2021.09.20
 		||( $f_mast_end	==	$true)){
 
 		$line	=~ s/＃LABEL_DAY/$LABEL_DAY/;
@@ -100,7 +102,8 @@ binmode STDERR, ':encoding(cp932)';
 			&read_link_rtn();
 	}	
 
-	$line	=	"</body>\n";
+#	$line	=	"</body>\n";		
+	$line	=	"</div><!-- /#wrap -->\n";		#2021.09.21
 
 	until( $f_mast_end	==	$true){
 

@@ -1,18 +1,11 @@
-@charset “UTF-8”; /*この指定は、外部スタイルシートファイル内でのみ使用 文字化けを防ぐため*/
+﻿@charset “UTF-8”; /*この指定は、外部スタイルシートファイル内でのみ使用 文字化けを防ぐため*/
 
+/*ウィンドウ背景色の設定*/
+/* 2021.09.04  新規作成 背景の色をピンクに設定する から始める		*/
 body{
-	background-color: #D3FEF1;						/* 弱い青みの緑*/
+	background-color: #ecddfa;		/* ピンクパール（Pink pearl）薄い青紫 */
 }
-.today_title{
-	color:red;
-}
-.def-toha{
-	color:black;
-	width:480px;
-/*	width:90%;	ng  */
-	font-weight:bold;
-	font-size:80%;
-}
+
 #wrap{
 	width:580px;	*/				/*パソコン（スマホ以外）の場合がこれ*/
 	margin:2px 0;					/*枠の外側 */
@@ -25,4 +18,3 @@ body{
 @media screen and (min-width: 970px) and  (max-width: 980px) {		/*上原のスマホは980pxの場合がこれ*/
 		#wrap { width:930px; }
 }
-
