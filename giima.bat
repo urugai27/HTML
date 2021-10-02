@@ -3,7 +3,7 @@ echo %htmldir%
 set myDocDir=E:\Urugai27\public
 
 set PERL5LIB=%~dp0
-perlGiima.pl def_mayaa_index.html tmp_edit.html
+perl Giima.pl def_giima_index.html tmp_edit.html
 
 del /q %myDocDir%\image\*.*
 del /q %myDocDir%\link\*.*
