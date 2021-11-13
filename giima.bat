@@ -16,4 +16,6 @@ xcopy /y /d %htmldir%\index.html %myDocDir%\index.html
 
 xcopy /e /d %htmldir%\audio      %myDocDir%\audio
 
+xcopy /e /d %htmldir%\Reimage_giima    %myDocDir%\Reimage_giima
+
 
