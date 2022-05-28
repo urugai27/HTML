@@ -1,4 +1,5 @@
-﻿# 2021.09.29  格納アドレスを絶対アドレスからカレントディレクトリへ変更
+﻿# 2022.05.28 タイトルが消えた場合は異常終了させる 		
+# 2021.09.29  格納アドレスを絶対アドレスからカレントディレクトリへ変更
 use strict;
 use warnings;
 use utf8;
@@ -103,6 +104,10 @@ sub head_write_rtn{
 
 		if($line	=~/title:(.*)/){
 			$title	= $1;
+		}
+#---------2022.05.28 タイトルが消えた場合は異常終了させる ----------------------#		
+		else{
+			die("title: error");
 		}	
 		print OTDD encode('utf8',$title);
 		print OTDD "</FONT>\n";
