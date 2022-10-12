@@ -92,6 +92,14 @@ binmode STDERR, ':encoding(cp932)';
 #2021.06.25 外部リンク　font 設定を css へ　変更
 			$line	=~ s/<FONT color=\"magenta\">/<span class="External_link">/;
 			$line	=~ s/<\/FONT>/<\/span>/;
+#<-	
+#2022.10.12 上記外部リンク置換で　/font が/span に変わってしまった場合
+#<br><FONT color="red">がっつり</span>	→ 正しくは	<br><FONT color="red">がっつり</FONT>
+			if($line	=~/<FONT\s+color/){			#
+				if($line	=~/\/span>/){	
+					$line	=~ s/<\/span>/<\/FONT>/;
+				}					
+			}
 #<-			
 #編集時刻を置き換える	<br>16:15
 			if($line	=~/^<br>(\d{2}):(\d{2})$/){			#
