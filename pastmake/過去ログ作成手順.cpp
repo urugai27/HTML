@@ -1,4 +1,5 @@
-﻿運用 2022.09.25	past15,past16	を切り出す作成	
+﻿運用 2022.11.13	past17			を切り出す作成	
+運用 2022.09.25	past15,past16	を切り出す作成	
 作成 2022.04.28
 
 1.過去ログ対象の元ネタをフォルダー内に取り込む
@@ -6,10 +7,13 @@
 		1pastmake.bat
 		
 2.過去ログ対象になる日付をパラメタに与え、切り離しを行う
+		
 
 		2pastinc.bat				
 
 	→	"<a name=""label20211217"
+	
+		label20221031
 	
 3.新しい LogPast.html を作成する(makelog_otdd.cpp)	
 
@@ -27,6 +31,8 @@
 
 		copy %htmldir%\pastmake\makePast_otdd.cpp	%htmldir%\pastmake\new\past13.html
 		↑\new\past13.html を新しいpastへ変更する
+
+		↑\new\past17.html を新しいpastへ変更する	2022.11.13
 
 		6RepCopy.bat						
 
@@ -57,4 +63,10 @@ C.Linkのファイルを置換する
 D.     置換対象フォルダへ入れ替える（手作業）
 
 		RepLinkフォルダを吸い上げて、\homepage\link（本番） へ置き換える
+
+2022.11.13 add		最後に少なくなった、index.htmlをold_index.htmlへ入れ替え
+					行のチェックが変更後のindex.htmlで行えるようにする
+					
+		DindexRep.bat
+
 
