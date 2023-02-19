@@ -1,4 +1,5 @@
-﻿use strict;
+﻿#		2023.02.19 2023.２０.２３ (２０２３年建国記念の日)の日付抽出の誤り
+use strict;
 use warnings;
 use utf8;
 
@@ -68,7 +69,8 @@ binmode STDERR, ':encoding(cp932)';
 
 #<br>2021年12月17日 (金）<FONT color="blue">小節番号</FONT>
 
-			if($old_line	=~/^<br>(\d{4}).*(\d{2}).*(\d{2})/){
+#			if($old_line	=~/^<br>(\d{4}).*(\d{2}).*(\d{2})/){		#2023.02.19 
+			if($old_line	=~/^<br>(\d{4}).*(\d{2}).*(\d{2}).*\(/){
 				$date_to	= $1.".".$2.".".$3;
 				print "$date_to ";
 				

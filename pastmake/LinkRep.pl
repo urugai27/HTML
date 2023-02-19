@@ -1,4 +1,5 @@
 ﻿#2022.04.29 		link フォルダにあるlink.html の戻る先を過去ログへ変更する
+#2023.02.13 		 9:01:23	日付が一桁の場合の考慮漏れ
 use strict;
 use warnings;
 use utf8;
@@ -43,8 +44,10 @@ binmode STDERR, ':encoding(cp932)';
 	while( $f_in_end	==	$false){
 
 #      1334   2021/10/08      15:09:02  D:\homepage\link\20211008_1Tocho.html
+#      1384   2022/11/01       9:01:23  C:\Users\ATHUSHI\homepage\link\20221101_1Umi.html	2023.02.18 
 
-		if($line	=~/(\d{2}:\d{2}:\d{2})  (.*html)/){
+#		if($line	=~/(\d{2}:\d{2}:\d{2})  (.*html)/){			#2023.02.18 
+		if($line	=~/(\d{1,2}:\d{2}:\d{2})  (.*html)/){			
 			$linkAddres	= $2;
 #			print 	"linkAddres:",$linkAddres,"\n";
 		}
@@ -59,6 +62,7 @@ binmode STDERR, ':encoding(cp932)';
 
 		}
 #----------------( 個別のlinkファイルを読み込む )------------------#
+		print 	"linkAddres:",$linkAddres,"\n";
 		open(LINKDD,"<",$linkAddres) or die("error :$!");
 		open(REPDD,">",$RepAddres) or die("error :$!");
 
