@@ -1,3 +1,4 @@
+#2025.01.09			画面のデータのサイズが500KB以下の小さいサイズは縮小しない
 #2021.03.28			縮小しない場合はそのままの画像を展開する   
 #2021.08.29			イメージファイルの格納アドレスを絶対アドレスからカレントディレクトリへ変更
 import re			#2021.08.29 		正規表現にマッチした文字列を新しい文字列に置換する
@@ -16,15 +17,23 @@ files = glob.glob('./*.JPG')
 #ファイル一覧をループ
 for f in files:
   img = Image.open(f)
+#2025.01.09  画面のデータのサイズが500KB以下の小さいサイズは縮小しない
+  file_size = os.path.getsize(f)
+  file_size_KB = int(file_size / 1024)
+  print(str(file_size_KB))
+  
   #指定幅以下の画像はそのままのサイズ１で縮小
-  if wsize < img.width:
+#  if wsize < img.width:
+  if wsize < img.width and file_size_KB >= 500:   #2025.01.09 条件を追加
   #指定幅からリサイズレートを算出
      rate = wsize / img.width
   #リサイズレートから高さを算出
      hsize = int(img.height * rate)
   else:
-     wsize=img.width
-     hsize=img.height
+     rate = 1.8									#パッケージを使うとサイズが小さくなるので１．３倍
+     wsize= int(img.width * rate)	
+     hsize = int(img.height * rate)	
+
   #リサイズ実行
   img_resize = img.resize((wsize, hsize))
   #新しいファイル名を作成

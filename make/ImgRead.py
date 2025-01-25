@@ -1,3 +1,4 @@
+# 2025.01.09  500KB以下の小さいサイズは縮小しないよう、画面のサイズ情報を追加する
 import os
 import glob
 from PIL import Image
@@ -43,6 +44,14 @@ for f in files:
   rate = 720 / img.width					#指定幅からリサイズレートを算出
   hsize = int(img.height * rate)			#リサイズレートから高さを算出
   outrec = ",720," +  str(hsize)
+  otdd.write(outrec)
+
+# 2025.01.09  500KB以下の小さいサイズは縮小しないよう、画面のデータのサイズKB情報を追加する
+
+  file_size = os.path.getsize(f)
+  file_size_KB = int(file_size / 1024)
+
+  outrec = "," +  str(file_size_KB)
   otdd.write(outrec)
 
   outrec = "\n"

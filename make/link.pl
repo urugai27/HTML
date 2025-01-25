@@ -1,4 +1,5 @@
-﻿# 2021.09.29  イメージファイルの格納アドレスを絶対アドレスからカレントディレクトリへ変更
+﻿# 2025.01.09  画面のデータのサイズが500KB以下の小さいサイズは縮小しない
+# 2021.09.29  イメージファイルの格納アドレスを絶対アドレスからカレントディレクトリへ変更
 # 2021.03.26  画面のサイズ情報を追加する
 use strict;
 use warnings;
@@ -46,6 +47,8 @@ binmode STDERR, ':encoding(cp932)';
 	my	$b;
 	my	$d;
 	my	$f;
+# 2025.01.08  画面のデータサイズ情報を追加する
+	my	$g;
 
 	my	$f_defin_end	= $false;
 	my	$defline	= "";
@@ -64,7 +67,9 @@ binmode STDERR, ':encoding(cp932)';
 #		($picture, $form, $stitle, $comment ) = split(/,/, $line );
 #		print $picture,",", $form,",", $stitle,",", $comment,"\n";
 #		print $picture,",", $form,",", $stitle,",", $comment,"\n";
-		($picture, $form, $stitle, $comment ,$a, $b, $wsize, $d, $f, $hsize) = split(/,/, $line );
+# 2025.01.08  画面のデータサイズ情報を追加する
+#		($picture, $form, $stitle, $comment ,$a, $b, $wsize, $d, $f, $hsize) = split(/,/, $line );
+		($picture, $form, $stitle, $comment ,$a, $b, $wsize, $d, $f, $hsize, $g) = split(/,/, $line );
 		print $picture,",", $form,",", $stitle,",", $comment,",",$wsize,",",$hsize,"\n";
 
 		&link_write_rtn();
